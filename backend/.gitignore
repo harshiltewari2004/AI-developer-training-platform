@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Environment — contains secrets
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# macOS
+.DS_Store
+
+# Runtime
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+
+# Build output
+dist/

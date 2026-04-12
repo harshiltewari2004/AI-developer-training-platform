@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Environment files — contains your API URL
+.env.local
+.env.production
+.env.development
+
+# BUT keep .env.production.example if you want
+# to document what variables are needed
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# macOS
+.DS_Store
+
+# Vite
+*.local
