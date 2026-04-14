@@ -10,7 +10,7 @@ import Progress            from './pages/Progress';
 import Recommendations     from './pages/Recommendations';
 import Profile             from './pages/Profile';
 import GitHubIntelligence  from './pages/GitHubIntelligence';
-import CodeForcesProfile   from './pages/CodeForcesProfile';
+import CodeforcesProfile   from './pages/CodeforcesProfile';
 
 const ProtectedRoute = ({ children }) => {
     const { user, loading } = useAuth();
