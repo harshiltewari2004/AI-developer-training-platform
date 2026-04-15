@@ -199,12 +199,12 @@ module.exports.githubCallBack = async (req, res) => {
       maxAge: 3 * 24 * 60 * 60 * 1000,
     });
     res.redirect(
-      `${process.env.FRONTEND_URL || "http://localhost:3000"}/dashboard?login=success`,
+      `${process.env.FRONTEND_URL}/dashboard?login=success`,
     );
   } catch (error) {
     console.error("Github OAuth Error:", error.message);
     res.redirect(
-      `${process.env.FRONTEND_URL || "http://localhost:3000"}/login?error=github_failed`,
+      `${process.env.FRONTEND_URL}/login?error=github_failed`,
     );
   }
 };
