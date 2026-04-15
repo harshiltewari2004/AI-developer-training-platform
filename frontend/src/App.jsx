@@ -44,7 +44,7 @@ const AppRoutes = () => {
 
             {/* github intelligence */}
             <Route path="/github-intelligence" element={<ProtectedRoute><GitHubIntelligence /></ProtectedRoute>} />
-            <Route path="/codeforces"          element={<ProtectedRoute><CodeForcesProfile /></ProtectedRoute>} />
+            <Route path="/codeforces"          element={<ProtectedRoute><CodeforcesProfile /></ProtectedRoute>} />
 
             {/* profile */}
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
