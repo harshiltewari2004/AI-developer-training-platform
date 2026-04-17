@@ -29,10 +29,11 @@ module.exports.Signup = async (req, res, next) => {
     });
     const token = createSecretToken(newUser._id);
 
+    const isProd = process.env.NODE_ENV==="production";
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "none",
+      secure: isProd,
+      sameSite: isProd?"none":lax,
       maxAge: 3 * 24 * 60 * 60 * 1000,
     });
 
@@ -222,6 +223,10 @@ module.exports.getMe = async (req, res) => {
     }
 }
 module.exports.logout = (req, res) => {
-    res.clearCookie('token');
+    res.clearCookie('token',{
+      httpOnly:true,
+      secure:process.env.NODE_ENV==='production',
+      sameSite:'none'
+    });
     res.status(200).json({ success: true, message: 'Logged out' });
 };
