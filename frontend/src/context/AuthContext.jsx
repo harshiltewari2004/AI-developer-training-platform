@@ -29,6 +29,10 @@ export const AuthProvider = ({ children }) => {
             setUser(null);
         } catch (err) {
            setUser(null);
+        }
+        finally{
+            setUser(null);
+            window.location.href = '/login';
         } 
     };
 
