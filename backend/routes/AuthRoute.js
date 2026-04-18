@@ -8,7 +8,7 @@ router.post('/login', Login);
 router.post('/verify', userVerification);
 router.get('/me', requireAuth,getMe);
 router.get('/github', githubLogin);
-router.get('/logout', logout);
+router.post('/logout', logout);
 router.get('/github/callback', githubCallBack);
 // call this from frontend to check if user is logged in
 
