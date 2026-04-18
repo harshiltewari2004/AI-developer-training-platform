@@ -1,6 +1,7 @@
 // eslint-disable-next-line react-refresh/only-export-components
 import { createContext, useContext, useEffect, useState } from 'react';
 import API from '../api/axios';
+import { set } from 'mongoose';
 
 const AuthContext = createContext();
 
@@ -25,11 +26,10 @@ export const AuthProvider = ({ children }) => {
     const logout = async () => {
         try {
             await API.post('/auth/logout');
-        } catch (err) {
-            // silently fail
-        } finally {
             setUser(null);
-        }
+        } catch (err) {
+           setUser(null);
+        } 
     };
 
     return (
