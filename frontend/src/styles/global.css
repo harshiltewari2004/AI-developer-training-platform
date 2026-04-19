@@ -21,11 +21,14 @@
   padding: 0;
 }
 
-body {
+html,
+body,
+#root {
+  background-color: #0A0A0A !important;
+  color: #FAFAFA !important;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--bg);
-  color: var(--text-1);
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 /* MUI dark overrides */
