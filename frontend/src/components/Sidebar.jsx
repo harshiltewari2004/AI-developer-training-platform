@@ -22,56 +22,12 @@ const devLinks = [
     { to: '/github-intelligence', label: 'GitHub Intel', icon: faGithub },
 ];
 
-function NavItem({ to, label, icon }) {
-    return (
-        <NavLink to={to} style={{ textDecoration: 'none' }}>
-            {({ isActive }) => (
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 10,
-                    padding: '7px 10px',
-                    borderRadius: 8,
-                    backgroundColor: isActive ? '#0A0A0A' : 'transparent',
-                    transition: 'background-color 0.1s',
-                    cursor: 'pointer',
-                    marginBottom: 1
-                }}
-                onMouseEnter={e => {
-                    if (!isActive) e.currentTarget.style.backgroundColor = '#F5F5F5';
-                }}
-                onMouseLeave={e => {
-                    if (!isActive) e.currentTarget.style.backgroundColor = 'transparent';
-                }}>
-                    <FontAwesomeIcon
-                        icon={icon}
-                        style={{
-                            fontSize: 13,
-                            color: isActive ? '#FFFFFF' : '#A3A3A3',
-                            width: 14,
-                            flexShrink: 0
-                        }}
-                    />
-                    <span style={{
-                        fontSize: 13,
-                        fontWeight: isActive ? 600 : 400,
-                        color: isActive ? '#FFFFFF' : '#525252',
-                        fontFamily: 'Inter, sans-serif'
-                    }}>
-                        {label}
-                    </span>
-                </div>
-            )}
-        </NavLink>
-    );
-}
-
 function SectionLabel({ label }) {
     return (
         <p style={{
             fontSize: 10,
             fontWeight: 600,
-            color: '#A3A3A3',
+            color: '#333333',
             letterSpacing: '0.8px',
             textTransform: 'uppercase',
             padding: '0 10px',
@@ -84,9 +40,54 @@ function SectionLabel({ label }) {
     );
 }
 
+function NavItem({ to, label, icon }) {
+    return (
+        <NavLink to={to} style={{ textDecoration: 'none' }}>
+            {({ isActive }) => (
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 10,
+                        padding: '7px 10px',
+                        borderRadius: 8,
+                        backgroundColor: isActive ? '#FAFAFA' : 'transparent',
+                        transition: 'background-color 0.1s',
+                        cursor: 'pointer',
+                        marginBottom: 1
+                    }}
+                    onMouseEnter={e => {
+                        if (!isActive) e.currentTarget.style.backgroundColor = '#111111';
+                    }}
+                    onMouseLeave={e => {
+                        if (!isActive) e.currentTarget.style.backgroundColor = 'transparent';
+                    }}
+                >
+                    <FontAwesomeIcon
+                        icon={icon}
+                        style={{
+                            fontSize: 13,
+                            color: isActive ? '#0A0A0A' : '#525252',
+                            width: 14,
+                            flexShrink: 0
+                        }}
+                    />
+                    <span style={{
+                        fontSize: 13,
+                        fontWeight: isActive ? 600 : 400,
+                        color: isActive ? '#0A0A0A' : '#A3A3A3',
+                        fontFamily: 'Inter, sans-serif'
+                    }}>
+                        {label}
+                    </span>
+                </div>
+            )}
+        </NavLink>
+    );
+}
+
 export default function Sidebar() {
     const { user, logout } = useAuth();
-    const navigate = useNavigate();
 
     const handleLogout = async () => {
         await logout();
@@ -96,8 +97,8 @@ export default function Sidebar() {
         <aside style={{
             width: 216,
             minHeight: '100vh',
-            backgroundColor: '#FFFFFF',
-            borderRight: '1px solid #E5E5E5',
+            backgroundColor: '#0A0A0A',
+            borderRight: '1px solid #1A1A1A',
             display: 'flex',
             flexDirection: 'column',
             flexShrink: 0
@@ -106,12 +107,12 @@ export default function Sidebar() {
             {/* Logo */}
             <div style={{
                 padding: '20px 16px 16px',
-                borderBottom: '1px solid #F5F5F5'
+                borderBottom: '1px solid #1A1A1A'
             }}>
                 <p style={{
                     fontSize: 15,
                     fontWeight: 700,
-                    color: '#0A0A0A',
+                    color: '#FAFAFA',
                     letterSpacing: '-0.3px',
                     fontFamily: 'Inter, sans-serif'
                 }}>
@@ -119,8 +120,8 @@ export default function Sidebar() {
                 </p>
                 <p style={{
                     fontSize: 11,
-                    color: '#A3A3A3',
-                    marginTop: 1,
+                    color: '#525252',
+                    marginTop: 2,
                     fontFamily: 'Inter, sans-serif'
                 }}>
                     AI Training Platform
@@ -128,14 +129,22 @@ export default function Sidebar() {
             </div>
 
             {/* Nav */}
-            <nav style={{ flex: 1, padding: '8px 8px', overflowY: 'auto' }}>
+            <nav style={{
+                flex: 1,
+                padding: '8px 8px',
+                overflowY: 'auto'
+            }}>
                 <SectionLabel label="Problem Solving" />
                 {problemLinks.map(l => <NavItem key={l.to} {...l} />)}
 
                 <SectionLabel label="Development" />
                 {devLinks.map(l => <NavItem key={l.to} {...l} />)}
 
-                <div style={{ marginTop: 16, borderTop: '1px solid #F5F5F5', paddingTop: 8 }}>
+                <div style={{
+                    marginTop: 16,
+                    borderTop: '1px solid #1A1A1A',
+                    paddingTop: 8
+                }}>
                     <NavItem to="/profile" label="Profile" icon={faUser} />
                 </div>
             </nav>
@@ -143,7 +152,7 @@ export default function Sidebar() {
             {/* User footer */}
             <div style={{
                 padding: '12px 16px',
-                borderTop: '1px solid #F5F5F5'
+                borderTop: '1px solid #1A1A1A'
             }}>
                 <div style={{
                     display: 'flex',
@@ -158,7 +167,8 @@ export default function Sidebar() {
                             width: 28,
                             height: 28,
                             fontSize: 11,
-                            bgcolor: '#0A0A0A',
+                            bgcolor: '#1A1A1A',
+                            border: '1px solid #262626',
                             flexShrink: 0
                         }}
                     >
@@ -168,7 +178,7 @@ export default function Sidebar() {
                         <p style={{
                             fontSize: 12,
                             fontWeight: 500,
-                            color: '#0A0A0A',
+                            color: '#FAFAFA',
                             whiteSpace: 'nowrap',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
@@ -178,7 +188,7 @@ export default function Sidebar() {
                         </p>
                         <p style={{
                             fontSize: 11,
-                            color: '#A3A3A3',
+                            color: '#525252',
                             whiteSpace: 'nowrap',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
@@ -188,6 +198,7 @@ export default function Sidebar() {
                         </p>
                     </div>
                 </div>
+
                 <button
                     onClick={handleLogout}
                     style={{
@@ -195,7 +206,7 @@ export default function Sidebar() {
                         alignItems: 'center',
                         gap: 6,
                         fontSize: 12,
-                        color: '#A3A3A3',
+                        color: '#525252',
                         background: 'none',
                         border: 'none',
                         cursor: 'pointer',
@@ -203,8 +214,8 @@ export default function Sidebar() {
                         fontFamily: 'Inter, sans-serif',
                         transition: 'color 0.15s'
                     }}
-                    onMouseEnter={e => e.currentTarget.style.color = '#0A0A0A'}
-                    onMouseLeave={e => e.currentTarget.style.color = '#A3A3A3'}
+                    onMouseEnter={e => e.currentTarget.style.color = '#FAFAFA'}
+                    onMouseLeave={e => e.currentTarget.style.color = '#525252'}
                 >
                     <FontAwesomeIcon icon={faSignOut} style={{ fontSize: 11 }} />
                     Sign out

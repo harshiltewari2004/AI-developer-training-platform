@@ -8,20 +8,21 @@ export default function PageHeader({ title, subtitle, action }) {
         }}>
             <div>
                 <h1 style={{
-                    fontSize: 24,
+                    fontSize: 22,
                     fontWeight: 700,
-                    color: '#0A0A0A',
+                    color: '#FAFAFA',
                     letterSpacing: '-0.5px',
-                    lineHeight: 1.2
+                    lineHeight: 1.2,
+                    fontFamily: 'Inter, sans-serif'
                 }}>
                     {title}
                 </h1>
                 {subtitle && (
                     <p style={{
-                        fontSize: 14,
-                        color: '#737373',
+                        fontSize: 13,
+                        color: '#525252',
                         marginTop: 4,
-                        fontWeight: 400
+                        fontFamily: 'Inter, sans-serif'
                     }}>
                         {subtitle}
                     </p>

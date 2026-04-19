@@ -5,7 +5,7 @@ export default function Layout({ children }) {
         <div style={{
             display: 'flex',
             minHeight: '100vh',
-            backgroundColor: '#FAFAFA'
+            backgroundColor: '#0A0A0A'
         }}>
             <Sidebar />
             <main style={{

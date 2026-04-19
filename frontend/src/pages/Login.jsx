@@ -7,10 +7,10 @@ import API from '../api/axios';
 import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
-    const { setUser }      = useAuth();
-    const navigate         = useNavigate();
-    const [form, setForm]  = useState({ email: '', password: '' });
-    const [error, setError]   = useState('');
+    const { setUser }           = useAuth();
+    const navigate              = useNavigate();
+    const [form, setForm]       = useState({ email: '', password: '' });
+    const [error, setError]     = useState('');
     const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
@@ -44,7 +44,7 @@ export default function Login() {
     return (
         <div style={{
             minHeight: '100vh',
-            backgroundColor: '#FAFAFA',
+            backgroundColor: '#0A0A0A',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -53,33 +53,40 @@ export default function Login() {
         }}>
             <div style={{ width: '100%', maxWidth: 380 }}>
 
-                {/* logo */}
+                {/* Logo */}
                 <div style={{ textAlign: 'center', marginBottom: 40 }}>
                     <h1 style={{
                         fontSize: 22,
                         fontWeight: 700,
-                        color: '#0A0A0A',
-                        letterSpacing: '-0.5px'
+                        color: '#FAFAFA',
+                        letterSpacing: '-0.5px',
+                        fontFamily: 'Inter, sans-serif'
                     }}>
                         DevTrack
                     </h1>
-                    <p style={{ fontSize: 13, color: '#A3A3A3', marginTop: 4 }}>
+                    <p style={{
+                        fontSize: 13,
+                        color: '#525252',
+                        marginTop: 4,
+                        fontFamily: 'Inter, sans-serif'
+                    }}>
                         AI Developer Training Platform
                     </p>
                 </div>
 
-                {/* card */}
+                {/* Card */}
                 <div style={{
-                    backgroundColor: '#FFFFFF',
-                    border: '1px solid #E5E5E5',
+                    backgroundColor: '#111111',
+                    border: '1px solid #262626',
                     borderRadius: 16,
                     padding: 32
                 }}>
                     <h2 style={{
                         fontSize: 16,
                         fontWeight: 600,
-                        color: '#0A0A0A',
-                        marginBottom: 24
+                        color: '#FAFAFA',
+                        marginBottom: 24,
+                        fontFamily: 'Inter, sans-serif'
                     }}>
                         Sign in
                     </h2>
@@ -94,12 +101,12 @@ export default function Login() {
                             justifyContent: 'center',
                             gap: 8,
                             padding: '10px 16px',
-                            backgroundColor: '#0A0A0A',
-                            color: '#FFFFFF',
+                            backgroundColor: '#FAFAFA',
+                            color: '#0A0A0A',
                             border: 'none',
                             borderRadius: 8,
                             fontSize: 13,
-                            fontWeight: 500,
+                            fontWeight: 600,
                             cursor: 'pointer',
                             fontFamily: 'Inter, sans-serif',
                             marginBottom: 20,
@@ -112,25 +119,45 @@ export default function Login() {
                         Continue with GitHub
                     </button>
 
-                    {/* divider */}
+                    {/* Divider */}
                     <div style={{
                         display: 'flex',
                         alignItems: 'center',
                         gap: 12,
                         marginBottom: 20
                     }}>
-                        <div style={{ flex: 1, height: 1, backgroundColor: '#F5F5F5' }} />
-                        <span style={{ fontSize: 11, color: '#A3A3A3' }}>or</span>
-                        <div style={{ flex: 1, height: 1, backgroundColor: '#F5F5F5' }} />
+                        <div style={{ flex: 1, height: 1, backgroundColor: '#1A1A1A' }} />
+                        <span style={{
+                            fontSize: 11,
+                            color: '#525252',
+                            fontFamily: 'Inter, sans-serif'
+                        }}>
+                            or
+                        </span>
+                        <div style={{ flex: 1, height: 1, backgroundColor: '#1A1A1A' }} />
                     </div>
 
                     {error && (
-                        <Alert severity="error" sx={{ mb: 2, fontSize: 12, borderRadius: 2 }}>
+                        <Alert
+                            severity="error"
+                            sx={{
+                                mb: 2,
+                                fontSize: 12,
+                                borderRadius: 2,
+                                backgroundColor: '#1A1A1A !important',
+                                border: '1px solid #262626 !important',
+                                color: '#FAFAFA !important'
+                            }}
+                        >
                             {error}
                         </Alert>
                     )}
 
-                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                    {/* Form */}
+                    <form
+                        onSubmit={handleSubmit}
+                        style={{ display: 'flex', flexDirection: 'column', gap: 12 }}
+                    >
                         <TextField
                             fullWidth
                             size="small"
@@ -141,8 +168,21 @@ export default function Login() {
                             onChange={handleChange}
                             required
                             sx={{
-                                '& .MuiOutlinedInput-root': { borderRadius: 2, fontSize: 13 },
-                                '& .MuiInputLabel-root': { fontSize: 13 }
+                                '& .MuiOutlinedInput-root': {
+                                    borderRadius: 2,
+                                    fontSize: 13,
+                                    backgroundColor: '#1A1A1A',
+                                    color: '#FAFAFA',
+                                    fontFamily: 'Inter, sans-serif',
+                                },
+                                '& .MuiOutlinedInput-notchedOutline': {
+                                    borderColor: '#262626',
+                                },
+                                '& .MuiInputLabel-root': {
+                                    fontSize: 13,
+                                    color: '#525252',
+                                    fontFamily: 'Inter, sans-serif',
+                                },
                             }}
                         />
                         <TextField
@@ -155,22 +195,36 @@ export default function Login() {
                             onChange={handleChange}
                             required
                             sx={{
-                                '& .MuiOutlinedInput-root': { borderRadius: 2, fontSize: 13 },
-                                '& .MuiInputLabel-root': { fontSize: 13 }
+                                '& .MuiOutlinedInput-root': {
+                                    borderRadius: 2,
+                                    fontSize: 13,
+                                    backgroundColor: '#1A1A1A',
+                                    color: '#FAFAFA',
+                                    fontFamily: 'Inter, sans-serif',
+                                },
+                                '& .MuiOutlinedInput-notchedOutline': {
+                                    borderColor: '#262626',
+                                },
+                                '& .MuiInputLabel-root': {
+                                    fontSize: 13,
+                                    color: '#525252',
+                                    fontFamily: 'Inter, sans-serif',
+                                },
                             }}
                         />
+
                         <button
                             type="submit"
                             disabled={loading}
                             style={{
                                 width: '100%',
                                 padding: '10px 16px',
-                                backgroundColor: '#0A0A0A',
-                                color: '#FFFFFF',
+                                backgroundColor: '#FAFAFA',
+                                color: '#0A0A0A',
                                 border: 'none',
                                 borderRadius: 8,
                                 fontSize: 13,
-                                fontWeight: 500,
+                                fontWeight: 600,
                                 cursor: loading ? 'not-allowed' : 'pointer',
                                 opacity: loading ? 0.6 : 1,
                                 fontFamily: 'Inter, sans-serif',
@@ -178,22 +232,32 @@ export default function Login() {
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 gap: 8,
-                                marginTop: 4
+                                marginTop: 4,
+                                transition: 'opacity 0.15s'
                             }}
+                            onMouseEnter={e => { if (!loading) e.currentTarget.style.opacity = '0.85'; }}
+                            onMouseLeave={e => { e.currentTarget.style.opacity = loading ? '0.6' : '1'; }}
                         >
-                            {loading && <CircularProgress size={14} style={{ color: '#FFFFFF' }} />}
+                            {loading && (
+                                <CircularProgress size={13} style={{ color: '#0A0A0A' }} />
+                            )}
                             {loading ? 'Signing in...' : 'Sign in'}
                         </button>
                     </form>
 
                     <p style={{
                         fontSize: 12,
-                        color: '#A3A3A3',
+                        color: '#525252',
                         textAlign: 'center',
-                        marginTop: 20
+                        marginTop: 20,
+                        fontFamily: 'Inter, sans-serif'
                     }}>
                         Don't have an account?{' '}
-                        <Link to="/signup" style={{ color: '#0A0A0A', fontWeight: 500 }}>
+                        <Link to="/signup" style={{
+                            color: '#FAFAFA',
+                            fontWeight: 500,
+                            textDecoration: 'none'
+                        }}>
                             Sign up
                         </Link>
                     </p>

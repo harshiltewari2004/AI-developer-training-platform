@@ -2,19 +2,21 @@ import { useEffect, useState } from 'react';
 import API from '../api/axios';
 import Card from './ui/Card';
 
-function TopicBar({ topic, accuracy, color }) {
+function TopicBar({ topic, accuracy }) {
     const pct = parseFloat(accuracy);
+
     return (
-        <div style={{ marginBottom: 16 }}>
+        <div style={{ marginBottom: 18 }}>
             <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                marginBottom: 6
+                alignItems: 'center',
+                marginBottom: 7
             }}>
                 <span style={{
                     fontSize: 13,
-                    color: '#525252',
-                    fontWeight: 500,
+                    color: '#A3A3A3',
+                    fontWeight: 400,
                     textTransform: 'capitalize',
                     fontFamily: 'Inter, sans-serif'
                 }}>
@@ -23,7 +25,7 @@ function TopicBar({ topic, accuracy, color }) {
                 <span style={{
                     fontSize: 12,
                     fontWeight: 600,
-                    color,
+                    color: '#FAFAFA',
                     fontFamily: 'Inter, sans-serif'
                 }}>
                     {accuracy}
@@ -31,15 +33,15 @@ function TopicBar({ topic, accuracy, color }) {
             </div>
             <div style={{
                 width: '100%',
-                height: 4,
-                backgroundColor: '#F5F5F5',
+                height: 3,
+                backgroundColor: '#1A1A1A',
                 borderRadius: 2,
                 overflow: 'hidden'
             }}>
                 <div style={{
                     width: `${pct}%`,
                     height: '100%',
-                    backgroundColor: color,
+                    backgroundColor: '#FAFAFA',
                     borderRadius: 2,
                     transition: 'width 0.6s ease'
                 }} />
@@ -49,7 +51,7 @@ function TopicBar({ topic, accuracy, color }) {
 }
 
 export default function WeakTopics() {
-    const [topics, setTopics] = useState([]);
+    const [topics, setTopics]   = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -70,14 +72,14 @@ export default function WeakTopics() {
                 <h2 style={{
                     fontSize: 13,
                     fontWeight: 600,
-                    color: '#0A0A0A',
+                    color: '#FAFAFA',
                     fontFamily: 'Inter, sans-serif'
                 }}>
                     Weak Topics
                 </h2>
                 <span style={{
                     fontSize: 11,
-                    color: '#A3A3A3',
+                    color: '#525252',
                     fontFamily: 'Inter, sans-serif'
                 }}>
                     below 40%
@@ -85,11 +87,19 @@ export default function WeakTopics() {
             </div>
 
             {loading ? (
-                <p style={{ fontSize: 13, color: '#A3A3A3', fontFamily: 'Inter, sans-serif' }}>
+                <p style={{
+                    fontSize: 13,
+                    color: '#525252',
+                    fontFamily: 'Inter, sans-serif'
+                }}>
                     Loading...
                 </p>
             ) : topics.length === 0 ? (
-                <p style={{ fontSize: 13, color: '#A3A3A3', fontFamily: 'Inter, sans-serif' }}>
+                <p style={{
+                    fontSize: 13,
+                    color: '#525252',
+                    fontFamily: 'Inter, sans-serif'
+                }}>
                     No weak topics — great job! 🎉
                 </p>
             ) : (
@@ -98,7 +108,6 @@ export default function WeakTopics() {
                         key={t.topic}
                         topic={t.topic}
                         accuracy={t.accuracy}
-                        color="#0A0A0A"
                     />
                 ))
             )}
