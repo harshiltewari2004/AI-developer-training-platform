@@ -7,7 +7,7 @@ import {
   faPercent,
   faClock,
 } from "@fortawesome/free-solid-svg-icons";
-import StatCard from "../components/StatCard";
+import StatCard from '../components/ui/StatCard';
 import WeakTopics from "../components/WeakTopics";
 import StrongTopics from "../components/StrongTopics";
 import DailyRecommendations from "../components/DailyRecommendations";
