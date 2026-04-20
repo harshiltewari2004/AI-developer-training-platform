@@ -1,7 +1,6 @@
 // eslint-disable-next-line react-refresh/only-export-components
 import { createContext, useContext, useEffect, useState } from 'react';
 import API from '../api/axios';
-import { set } from 'mongoose';
 
 const AuthContext = createContext();
 
