@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
 import API from '../api/axios';
-
-const severityStyle = {
-    high:       'bg-red-50 border-red-100 text-red-700',
-    medium:     'bg-yellow-50 border-yellow-100 text-yellow-700',
-    positive:   'bg-green-50 border-green-100 text-green-700',
-};
+import Card from './ui/Card';
 
 export default function GitHubInsights() {
     const [insights, setInsights] = useState([]);
@@ -23,30 +18,66 @@ export default function GitHubInsights() {
     }, []);
 
     return (
-        <div className="bg-white rounded-xl p-5 border border-gray-100">
-            <h2 className="text-sm font-medium text-gray-900 mb-4">
+        <Card>
+            <h2 style={{
+                fontSize: 13,
+                fontWeight: 600,
+                color: '#FAFAFA',
+                marginBottom: 20,
+                fontFamily: 'Inter, sans-serif'
+            }}>
                 GitHub Insights
             </h2>
 
             {loading ? (
-                <p className="text-xs text-gray-400">Loading...</p>
+                <p style={{
+                    fontSize: 12,
+                    color: '#525252',
+                    fontFamily: 'Inter, sans-serif'
+                }}>
+                    Loading...
+                </p>
             ) : insights.length === 0 ? (
-                <p className="text-xs text-gray-400">
+                <p style={{
+                    fontSize: 12,
+                    color: '#525252',
+                    fontFamily: 'Inter, sans-serif'
+                }}>
                     {message || 'Sync your GitHub repos to unlock insights.'}
                 </p>
             ) : (
-                <div className="space-y-2">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                     {insights.slice(0, 4).map((insight, i) => (
                         <div
                             key={i}
-                            className={`text-xs p-3 rounded-lg border ${severityStyle[insight.severity] || severityStyle.medium}`}
+                            style={{
+                                padding: 12,
+                                borderRadius: 10,
+                                border: '1px solid #262626',
+                                backgroundColor: '#1A1A1A'
+                            }}
                         >
-                            <p className="font-medium mb-0.5">{insight.title}</p>
-                            <p className="opacity-80">{insight.action}</p>
+                            <p style={{
+                                fontSize: 12,
+                                fontWeight: 600,
+                                color: '#FAFAFA',
+                                marginBottom: 4,
+                                fontFamily: 'Inter, sans-serif'
+                            }}>
+                                {insight.title}
+                            </p>
+                            <p style={{
+                                fontSize: 11,
+                                color: '#A3A3A3',
+                                lineHeight: 1.5,
+                                fontFamily: 'Inter, sans-serif'
+                            }}>
+                                {insight.action}
+                            </p>
                         </div>
                     ))}
                 </div>
             )}
-        </div>
+        </Card>
     );
 }
