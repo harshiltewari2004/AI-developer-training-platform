@@ -101,3 +101,47 @@ body,
   background: var(--border-2);
   border-radius: 2px;
 }
+/* Force all headings to be readable */
+h1, h2, h3, h4, h5, h6 {
+  color: #FAFAFA !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Force all paragraph text default to readable */
+p, span, div {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Override any tailwind text-gray-900 or similar */
+.text-gray-900,
+.text-black,
+.text-gray-800 {
+  color: #FAFAFA !important;
+}
+
+.text-gray-700,
+.text-gray-600,
+.text-gray-500 {
+  color: #A3A3A3 !important;
+}
+
+.text-gray-400,
+.text-gray-300 {
+  color: #525252 !important;
+}
+
+/* Tailwind background overrides */
+.bg-white {
+  background-color: #111111 !important;
+}
+
+.bg-gray-50,
+.bg-gray-100 {
+  background-color: #1A1A1A !important;
+}
+
+/* Ensure all card-style divs are dark */
+.bg-gray-900 {
+  background-color: #FAFAFA !important;
+  color: #0A0A0A !important;
+}
